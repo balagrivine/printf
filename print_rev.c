@@ -12,13 +12,15 @@
  * Return: number of characters printed
  */
 
-int print_reverse(va_list args, char buffer[], int size, int width, int flags, int precision)
+int print_reverse(va_list args, char buffer[],
+		int size, int width, int flags, int precision)
 {
-        char *string;
-        int i;
-        char j;
-        int num_chars = 0;
-        string = va_arg(args, char *);
+	char *string;
+	int i;
+	char j;
+	int num_chars = 0;
+
+	string = va_arg(args, char *);
 
 	UNUSED(buffer);
 	UNUSED(size);
@@ -26,19 +28,18 @@ int print_reverse(va_list args, char buffer[], int size, int width, int flags, i
 	UNUSED(width);
 	UNUSED(flags);
 
-        if (string == NULL)
-        {
-                string = "(NULL)";
-        }
+	if (string == NULL)
+	{
+		string = "(NULL)";
+	}
 
-        for (i = 0; string[i]; i++)
-        {
-                for (i = i - 1; i >= 0; i--)
-                {
-                        j = string[i];
-                        write(1, &j, 1);
-                        num_chars++;
-                }
-        }
-        return (num_chars);
+	for (i = 0; string[i]; i++)
+	{
+		for (i = i - 1; i >= 0; i--)
+		{
+			j = string[i];
+			write(1, &j, 1);
+			num_chars++;
+		}
+	return (num_chars);
 }
