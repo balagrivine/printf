@@ -17,14 +17,18 @@
 #define F_HASH 8
 #define F_SPACE 16
 
-int get_size(char *format, int *i);
-int get_width(char *format, int *i, va_list args);
+int get_size(const char *format, int *i);
+int get_precision(const char *format, int *i, va_list args);
+int print_string(va_list types, char buffer[], int flags, int width, int precision, int size);
 int _putchar(char c);
 int _printf(const char *format, ...);
 int binary(va_list args, char buffer[], int flags, int width, int precission, int size);
 int print_int(int value);
 void print_buffer(char buffer[], int *buff_ind);
 int is_num(int c);
+int print_percent(va_list types, char buffer[], int flags, int width, int precision, int size);
+int print_char(va_list types, char buffer[], int flags, int width, int precision, int size);
+int handle_write_char(char c, char buffer[], int flags, int width, int precision, int size);
 long int convert_unsigned(long unsigned int num, int size);
 int write_unsgnd(va_list args, char buffer[], int flags, int width, int precision, int size);
 int print_num(va_list args, char buffer[], int flags, int width, int precision, int size);
@@ -35,8 +39,8 @@ int unsigned_octal(va_list args, char buffer[], int size, int flags, int precisi
 int unsigned_hexa_lower(va_list args, char buffer[], int width, int flags, int precision, int size);
 int unsigned_hexa_upper(va_list args, char buffer[], int width, int flags, int precision, int size);
 int print_reverse(va_list args, char buffer[], int size, int width, int flags, int precision);
-int get_width(char *format, int *i, va_list args);
-int get_flags(char *format, int *i);
+int get_width(const char *format, int *i, va_list args);
+int get_flags(const char *format, int *i);
 int rot_string(va_list args, char buffer[], int flags, int width, int precision, int size);
 int print_pointer(va_list args, char buffer[], int width, int size, int flags, int precision);
 

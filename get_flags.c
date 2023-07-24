@@ -8,7 +8,7 @@
  * Return: flags
  */
 
-int get_flags(char *format, int *i)
+int get_flags(const char *format, int *i)
 {
         int curr_pos;
         int flags = 0;

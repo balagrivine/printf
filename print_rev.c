@@ -41,5 +41,6 @@ int print_reverse(va_list args, char buffer[],
 			write(1, &j, 1);
 			num_chars++;
 		}
+	}
 	return (num_chars);
 }
