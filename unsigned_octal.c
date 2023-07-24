@@ -18,6 +18,7 @@ int unsigned_octal(va_list args, char buffer[], int size, int flags, int precisi
         int j;
         unsigned long int num = va_arg(args, int);
         int num_chars = 0;
+	unsigned long int int_num = num;
         num = convert_unsigned(num, size);
 
 	UNUSED(flags);
@@ -44,5 +45,8 @@ int unsigned_octal(va_list args, char buffer[], int size, int flags, int precisi
                 num_chars++;
         }
 
-	return (num_chars);
+	if (flags & F_HASH && int_num != 0)
+		buffer[i--] = '0';
+	i++;
+	return (write_unsgnd(args, buffer, flags, width, precision, size));
 }
